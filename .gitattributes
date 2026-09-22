@@ -1,0 +1,10 @@
+/assets/videos/arabic-sign.mp4 filter=lfs diff=lfs merge=lfs -text
+/assets/videos/chase-game-sign.mp4 filter=lfs diff=lfs merge=lfs -text
+/assets/videos/english-sign.mp4 filter=lfs diff=lfs merge=lfs -text
+/assets/videos/general-sign.mp4 filter=lfs diff=lfs merge=lfs -text
+/assets/videos/interactive-learning.mp4 filter=lfs diff=lfs merge=lfs -text
+/assets/videos/math-sign.mp4 filter=lfs diff=lfs merge=lfs -text
+/assets/videos/memory-game-sign.mp4 filter=lfs diff=lfs merge=lfs -text
+/assets/videos/sign-support.mp4 filter=lfs diff=lfs merge=lfs -text
+/images/general/seasons/videos/autumn.mp4 filter=lfs diff=lfs merge=lfs -text
+/images/general/seasons/videos/winter.mp4 filter=lfs diff=lfs merge=lfs -text
