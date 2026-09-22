@@ -1,0 +1,257 @@
+/* ===== عنوان الصفحة ===== */
+.page-title {
+  text-align: center;
+  font-size: 48px;
+  margin: 10px 0 22px;
+  color: #1b5b8f;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+/* ===== التخطيط العام ===== */
+.number-layout {
+  display: grid;
+  grid-template-columns: 0.95fr 1.15fr;
+  gap: 22px;
+  align-items: stretch;
+  direction: ltr;
+}
+
+.number-layout > * {
+  direction: rtl;
+}
+
+/* ===== الصناديق ===== */
+.number-box,
+.speech-box {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 28px;
+  padding: 20px;
+  box-shadow: 0 14px 30px rgba(17, 75, 122, 0.08);
+}
+
+/* ===== صندوق الصورة ===== */
+.number-box {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 520px;
+}
+
+.number-box img {
+  max-width: 100%;
+  max-height: 440px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ===== صندوق النطق ===== */
+.speech-box h3 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  color: #145284;
+  font-weight: 900;
+}
+
+.speech-box p {
+  margin: 0 0 16px;
+  color: #6a8499;
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 700;
+}
+
+/* ===== الأزرار ===== */
+.btn {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 15px 18px;
+  border-radius: 18px;
+  border: none;
+  font-size: 18px;
+  font-weight: 900;
+  font-family: inherit;
+  background: linear-gradient(135deg, #4aa3ff, #63b4ff);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 12px 22px rgba(74, 163, 255, 0.22);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn.mic {
+  background: linear-gradient(135deg, #ff7d7d, #ff6b8a);
+  box-shadow: 0 12px 22px rgba(255, 107, 138, 0.22);
+}
+
+/* ===== أزرار اللعبة والتلوين ===== */
+.mini-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.mini-action {
+  text-decoration: none;
+  border-radius: 24px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 120px;
+  box-shadow: 0 12px 28px rgba(17, 75, 122, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mini-action:hover {
+  transform: translateY(-3px);
+}
+
+.quiz-box {
+  background: linear-gradient(135deg, #ffe5f0, #ffd8ea);
+}
+
+.coloring-box {
+  background: linear-gradient(135deg, #e7f8e8, #d8f3dd);
+}
+
+.action-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.mini-action-text h3 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  color: #21425f;
+  font-weight: 900;
+}
+
+.mini-action-text p {
+  margin: 0;
+  color: #688096;
+  font-size: 14px;
+  line-height: 1.7;
+  font-weight: 700;
+}
+
+/* ===== التنقل ===== */
+.nav-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.nav-row a {
+  text-decoration: none;
+  text-align: center;
+  padding: 14px 12px;
+  border-radius: 18px;
+  font-size: 17px;
+  font-weight: 900;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 24px rgba(17, 75, 122, 0.08);
+}
+
+.nav-row a:hover {
+  transform: translateY(-2px);
+}
+
+.prev-btn {
+  background: #eee5f8;
+  color: #6b3f94;
+}
+
+.center-btn {
+  background: #fff0a8;
+  color: #8a6a00;
+}
+
+.next-btn {
+  background: #dff1ff;
+  color: #114b7a;
+}
+
+/* ===== ناتج النطق ===== */
+.speech-result {
+  min-height: 26px;
+  font-size: 17px;
+  font-weight: 900;
+  margin-top: 10px;
+}
+
+.speech-result.listening {
+  color: #c27b00;
+}
+
+.speech-result.success {
+  color: #23934c;
+}
+
+.speech-result.error {
+  color: #d02c2c;
+}
+
+/* ===== ملاحظة ===== */
+.tip-box {
+  background: #f8fcff;
+  border: 2px dashed #cfe4f6;
+  border-radius: 18px;
+  padding: 14px 16px;
+  font-size: 15px;
+  color: #21425f;
+  line-height: 1.8;
+  font-weight: 700;
+  margin-top: 14px;
+}
+
+/* ===== ريسبونسف ===== */
+@media (max-width: 1100px) {
+  .number-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .number-box {
+    min-height: 400px;
+  }
+
+  .number-box img {
+    max-height: 320px;
+  }
+}
+
+@media (max-width: 700px) {
+  .page-title {
+    font-size: 34px;
+  }
+
+  .mini-actions,
+  .nav-row {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    font-size: 16px;
+    padding: 13px 16px;
+  }
+
+  .speech-box h3 {
+    font-size: 24px;
+  }
+}

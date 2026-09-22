@@ -1,0 +1,111 @@
+/* ===== Accessibility Tools ===== */
+
+.accessibility-tools {
+  position: fixed;
+  left: 18px;
+  bottom: 90px; /* رفع المجموعة كلها */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px; /* تباعد أكبر بين الزرين */
+  z-index: 9999;
+}
+
+.accessibility-tools .tool-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.accessibility-tools .tool-btn {
+  width: 68px;
+  height: 68px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: #f79f40;
+  color: #000;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.14);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.accessibility-tools .tool-btn i {
+  font-size: 28px;
+  color: #000;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.accessibility-tools .tool-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+  background: #ff8f18;
+}
+
+.accessibility-tools .sign-btn {
+  background: #5f9b27; /* قريب من لونك الحالي */
+}
+
+.accessibility-tools .sign-btn:hover {
+  background: #4db20f;
+}
+
+/* رفع زر لغة الإشارة شوي */
+.accessibility-tools .sign-wrapper {
+  margin-top: -6px;
+}
+
+/* إلغاء أي نص أبيض قديم نهائيًا */
+.accessibility-tools .tool-tooltip,
+.accessibility-tools .tool-label,
+.accessibility-tools span:not(.fi) {
+  display: none !important;
+}
+
+/* لو بدك نص توضيحي صغير تحت كل زر لاحقًا */
+.accessibility-tools .helper-label {
+  display: none;
+}
+
+/* موبايل */
+@media (max-width: 768px) {
+  .accessibility-tools {
+    left: 12px;
+    bottom: 80px;
+    gap: 20px;
+  }
+
+  .accessibility-tools .tool-btn {
+    width: 60px;
+    height: 60px;
+  }
+
+  .accessibility-tools .tool-btn i {
+    font-size: 24px;
+  }
+}
+body.ltr .accessibility-tools {
+  left: auto;
+  right: 18px;
+}
+:focus {
+  outline: 3px solid #FFD700;
+  outline-offset: 3px;
+}
+
+
+
+
+#voiceMuteIcon {
+  fill: none;
+}
+
+.hidden {
+  display: none;
+}
