@@ -24,16 +24,9 @@ if ($gender !== '') {
     $types   .= "s";
 }
 
-if ($age !== '') {
-    $where   .= " AND age = ?";
-    $params[] = intval($age);
-    $types   .= "i";
-}
 
 $orderBy = "id DESC";
 if ($order === 'oldest')   $orderBy = "id ASC";
-if ($order === 'age_high') $orderBy = "age DESC";
-if ($order === 'age_low')  $orderBy = "age ASC";
 
 $countAll    = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM children"))['total'];
 $countMale   = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM children WHERE gender='male'"))['total'];
@@ -335,24 +328,10 @@ $result = mysqli_stmt_get_result($stmt);
         </div>
 
         <div class="filter-group">
-            <label>العمر</label>
-            <select name="age">
-                <option value="">كل الأعمار</option>
-                <?php for ($i = 4; $i <= 8; $i++): ?>
-                    <option value="<?php echo $i; ?>" <?php if ($age == $i) echo 'selected'; ?>>
-                        <?php echo $i; ?> سنوات
-                    </option>
-                <?php endfor; ?>
-            </select>
-        </div>
-
-        <div class="filter-group">
             <label>ترتيب حسب</label>
             <select name="order" id="orderSelect">
                 <option value="newest"   <?php if ($order === 'newest')   echo 'selected'; ?>>الأحدث</option>
                 <option value="oldest"   <?php if ($order === 'oldest')   echo 'selected'; ?>>الأقدم</option>
-                <option value="age_high" <?php if ($order === 'age_high') echo 'selected'; ?>>الأكبر عمرًا</option>
-                <option value="age_low"  <?php if ($order === 'age_low')  echo 'selected'; ?>>الأصغر عمرًا</option>
             </select>
         </div>
 
@@ -368,7 +347,6 @@ $result = mysqli_stmt_get_result($stmt);
     <th>اسم المستخدم</th>
     <th>الصورة</th>
     <th>الرقم</th>
-    <th>العمر</th>
     <th>الجنس</th>
     <th>رقم الجوال</th>
     <th>تاريخ الإضافة</th>
@@ -389,7 +367,6 @@ $result = mysqli_stmt_get_result($stmt);
     </td>
 
     <td><?php echo $child['id']; ?></td>
-    <td><?php echo $child['age']; ?></td>
 
     <td>
         <?php if ($child['gender'] === 'male'): ?>
@@ -419,7 +396,7 @@ $result = mysqli_stmt_get_result($stmt);
 <?php endwhile; ?>
 <?php else: ?>
 <tr>
-    <td colspan="8" class="empty-row">لا يوجد أطفال مطابقين للبحث</td>
+    <td colspan="7" class="empty-row">لا يوجد أطفال مطابقين للبحث</td>
 </tr>
 <?php endif; ?>
 </tbody>
@@ -434,7 +411,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const filterForm   = document.getElementById("filterForm");
     const searchInput  = document.querySelector('input[name="search"]');
     const genderSelect = document.querySelector('select[name="gender"]');
-    const ageSelect    = document.querySelector('select[name="age"]');
     const orderSelect  = document.getElementById("orderSelect");
 
     // ترتيب حسب → submit فوري لأنه server-side
@@ -444,21 +420,19 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // فلترة client-side للبحث والجنس والعمر
+    // فلترة client-side للبحث والجنس
     const rows = document.querySelectorAll(".table-wrap tbody tr");
 
     function filterTable() {
         const search = searchInput.value.trim().toLowerCase();
         const gender = genderSelect.value;
-        const age    = ageSelect.value;
 
         rows.forEach(row => {
             if (row.querySelector('.empty-row')) return;
 
             const username     = row.children[0].textContent.trim().toLowerCase();
             const rowId        = row.children[2].textContent.trim().toLowerCase();
-            const rowAge       = row.children[3].textContent.trim();
-            const rowGenderTxt = row.children[4].textContent.trim();
+            const rowGenderTxt = row.children[3].textContent.trim();
 
             let rowGender = "";
             if (rowGenderTxt === "ذكر")  rowGender = "male";
@@ -466,15 +440,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const matchSearch = search === "" || rowId.includes(search) || username.includes(search);
             const matchGender = gender === "" || rowGender === gender;
-            const matchAge    = age === ""    || rowAge === age;
 
-            row.style.display = (matchSearch && matchGender && matchAge) ? "" : "none";
+            row.style.display = (matchSearch && matchGender) ? "" : "none";
         });
     }
 
     if (searchInput)  searchInput.addEventListener("input", filterTable);
     if (genderSelect) genderSelect.addEventListener("change", filterTable);
-    if (ageSelect)    ageSelect.addEventListener("change", filterTable);
 });
 </script>
 </body>
